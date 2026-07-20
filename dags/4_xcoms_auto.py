@@ -1,7 +1,7 @@
 from airflow.sdk import dag, task
 
 @dag
-def xcoms_dag():
+def xcoms_auto_dag():
 
     @task.python
     def first_task():
@@ -26,4 +26,4 @@ def xcoms_dag():
     second = second_task(first)
     third = third_task(second)
 
-xcoms_dag()
+xcoms_auto_dag()
