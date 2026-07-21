@@ -7,11 +7,13 @@ from airflow.operators.trigger_dagrun import TriggerDagRunOperator
 def orchestrate_dags():
     trigger_first_dag = TriggerDagRunOperator(
         task_id = "trigger_first_dag",
-        trigger_dag_id = "first_dag"
+        trigger_dag_id = "first_dag",
+        wait_for_completion = True
     )
     trigger_second_dag = TriggerDagRunOperator(
         task_id = "trigger_second_dag",
-        trigger_dag_id = "second_dag"
+        trigger_dag_id = "second_dag",
+        wait_for_completion = True
     )
 
     trigger_first_dag >> trigger_second_dag
